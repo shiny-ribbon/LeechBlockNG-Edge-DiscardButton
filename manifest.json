@@ -1,74 +1,45 @@
 {
-
-	"action": {
-		"browser_style": false,
-		"default_icon": {
-			"16": "icons/leechblock16.png",
-			"32": "icons/leechblock32.png",
-			"48": "icons/leechblock48.png",
-			"64": "icons/leechblock64.png"
-		},
-		"default_popup": "popup.html",
-		"default_title": "LeechBlock"
-	},
-
-	"author": "James Anderson",
-
-	"background": {
-		"service_worker": "background.js"
-	},
-
-	"content_scripts": [
-		{
-			"matches": ["<all_urls>"],
-			"css": ["content.css"],
-			"js": ["content.js"],
-			"run_at": "document_start"
-		}
-	],
-
-	"default_locale": "en",
-
-	"description": "__MSG_extensionDescription__",
-
-	"homepage_url": "https://www.proginosko.com/leechblock/",
-
-	"host_permissions": [
-		"<all_urls>"
-	],
-
-	"icons": {
-		"16": "icons/leechblock16.png",
-		"32": "icons/leechblock32.png",
-		"48": "icons/leechblock48.png",
-		"64": "icons/leechblock64.png",
-		"96": "icons/leechblock96.png",
-		"128": "icons/leechblock128.png"
-	},
-
-	"incognito": "split",
-
-	"manifest_version": 3,
-
-	"name": "__MSG_extensionName__",
-
-	"options_ui": {
-		"page": "options.html",
-		"open_in_tab": true
-	},
-
-	"permissions": [
-		"alarms",
-		"contextMenus",
-		"downloads",
-		"history",
-		"offscreen",
-		"storage",
-		"tabs",
-		"unlimitedStorage",
-		"webNavigation"
-	],
-
-	"version": "1.6.4"
-
+   "action": {
+      "browser_style": false,
+      "default_icon": {
+         "16": "icons/leechblock16.png",
+         "32": "icons/leechblock32.png",
+         "48": "icons/leechblock48.png",
+         "64": "icons/leechblock64.png"
+      },
+      "default_popup": "popup.html",
+      "default_title": "LeechBlock"
+   },
+   "author": "James Anderson",
+   "background": {
+      "service_worker": "background.js"
+   },
+   "content_scripts": [ {
+      "css": [ "content.css" ],
+      "js": [ "content.js" ],
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_start"
+   } ],
+   "default_locale": "en",
+   "description": "Custom Leechblock",
+   "differential_fingerprint": "1.f0f8325fd811cec87d0eae6c9f24ca644a4171472d8dfd9630d412ded550af8a",
+   "homepage_url": "https://www.proginosko.com/leechblock/",
+   "host_permissions": [ "\u003Call_urls>" ],
+   "icons": {
+      "128": "icons/leechblock128.png",
+      "16": "icons/leechblock16.png",
+      "32": "icons/leechblock32.png",
+      "48": "icons/leechblock48.png",
+      "64": "icons/leechblock64.png",
+      "96": "icons/leechblock96.png"
+   },
+   "incognito": "split",
+   "manifest_version": 3,
+   "name": "MyLeechblock",
+   "options_ui": {
+      "open_in_tab": true,
+      "page": "options.html"
+   },
+   "permissions": [ "alarms", "contextMenus", "downloads", "history", "offscreen", "storage", "tabs", "unlimitedStorage", "webNavigation" ],
+   "version": "1.6.6"
 }

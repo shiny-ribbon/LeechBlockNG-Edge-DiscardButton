@@ -7,8 +7,8 @@ const browser = chrome;
 const TIMER_SIZES = ["12px", "16px", "24px", "30px"];
 
 const TIMER_LOCATIONS = [
-	["0px", "auto", "0px", "auto"],
 	["0px", "auto", "auto", "0px"],
+	["0px", "auto", "0px", "auto"],
 	["auto", "0px", "auto", "0px"],
 	["auto", "0px", "0px", "auto"]
 ];
@@ -70,7 +70,7 @@ function updateTimer(text, size, location) {
 		if (location >= 0 && location < TIMER_LOCATIONS.length) {
 			gTimer.style.top = TIMER_LOCATIONS[location][0];
 			gTimer.style.bottom = TIMER_LOCATIONS[location][1];
-			gTimer.style.left = TIMER_LOCATIONS[location][2];
+			gTimer.style.left = "700px";
 			gTimer.style.right = TIMER_LOCATIONS[location][3];
 		}
 
@@ -83,10 +83,11 @@ function updateTimer(text, size, location) {
 			gDiscard.innerText = "Discard Remaining Time";
 			gDiscard.style.fontSize = "16px";
 			gDiscard.style.position = 'fixed';
+			gDiscard.style.textAlign = 'center';
 
-			gDiscard.style.top = TIMER_LOCATIONS[location][0];
+			gDiscard.style.top = "40px";
 			gDiscard.style.bottom = TIMER_LOCATIONS[location][1];
-			gDiscard.style.left = "350px";
+			gDiscard.style.left = "700px";
 			gDiscard.style.right = TIMER_LOCATIONS[location][3];
 
 			gDiscard.hidden = false;
