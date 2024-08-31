@@ -4,7 +4,7 @@
 
 const browser = chrome;
 
-const TIMER_SIZES = ["10px", "12px", "14px", "16px"];
+const TIMER_SIZES = ["12px", "16px", "24px", "30px"];
 
 const TIMER_LOCATIONS = [
 	["0px", "auto", "0px", "auto"],
@@ -15,18 +15,20 @@ const TIMER_LOCATIONS = [
 
 var gTimer;
 var gAlert;
+var gDiscard;
+let message;
 
 // Notify background script that page has loaded
 //
 function notifyLoaded() {
-	let incog = browser.extension.inIncognitoContext;
-
 	// Register that this script has now loaded
-	browser.runtime.sendMessage({ type: "loaded", url: document.URL, incog: incog });
+	browser.runtime.sendMessage({ type: "loaded", url: document.URL });
 
 	// Send URL of referring page to background script
 	browser.runtime.sendMessage({ type: "referrer", referrer: document.referrer });
 }
+
+function discardTime() {message = {type: "discard-time",};browser.runtime.sendMessage(message);location.reload()};
 
 // Update timer
 //
@@ -42,11 +44,18 @@ function updateTimer(text, size, location) {
 			gTimer = document.createElement("div");
 			gTimer.setAttribute("class", "leechblock-timer");
 			gTimer.addEventListener("dblclick", function (e) { this.style.display = "none"; });
+			
+			gDiscard = document.createElement("button");
+			gDiscard.setAttribute("class", "discard-button");
+			gDiscard.setAttribute("id", "discard-button");
+			gDiscard.addEventListener("click", discardTime);
+
 		}
 
 		if (!document.body.contains(gTimer)) {
 			// Insert timer at end of document body
 			document.body.appendChild(gTimer);
+			document.body.appendChild(gDiscard);
 		}
 
 		// Set text
@@ -67,6 +76,22 @@ function updateTimer(text, size, location) {
 
 		// Show timer
 		gTimer.hidden = false;
+
+
+		//Now for gDiscard
+
+			gDiscard.innerText = "Discard Remaining Time";
+			gDiscard.style.fontSize = "16px";
+			gDiscard.style.position = 'fixed';
+
+			gDiscard.style.top = TIMER_LOCATIONS[location][0];
+			gDiscard.style.bottom = TIMER_LOCATIONS[location][1];
+			gDiscard.style.left = "350px";
+			gDiscard.style.right = TIMER_LOCATIONS[location][3];
+
+			gDiscard.hidden = false;
+
+
 	}
 }
 
@@ -139,6 +164,7 @@ function applyFilter(name) {
 		"blur (32px)": "blur(32px)",
 		"fade (80%)": "opacity(20%)",
 		"fade (90%)": "opacity(10%)",
+		"fade (100%)": "opacity(0%)",
 		"grayscale": "grayscale(100%)",
 		"invert": "invert(100%)",
 		"sepia": "sepia(100%)"

@@ -13,12 +13,32 @@
 	color: #000;
 	border: 1px solid #000;
 	border-radius: 4px;
-	font-size: 12px;
+	font-size: 40px;
 	font-style: normal !important;
 	font-family: "Lucida Console", Monaco, monospace !important;
 	line-height: normal !important;
 	user-select: none;
 	-moz-user-select: none;
+}
+
+.discard-button{
+	z-index: 2147483648;
+	position: fixed;
+	top: 0px;
+	bottom: auto;
+	left: 0px;
+	right: auto;
+	margin: 2px;
+	width:200px;
+	border: 1px solid #000;
+	border-radius: 4px;
+	color:black;
+	background: lightblue;
+}
+
+.discard-button:hover{ 
+cursor: pointer; 
+background: MediumTurquoise !important; 
 }
 
 @media print {
