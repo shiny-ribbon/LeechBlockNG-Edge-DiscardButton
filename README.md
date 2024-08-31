@@ -4,12 +4,16 @@
 
 Like it says on the tin, this is a small change made to Leechblock to add the Remaining Time Discard option on-screen.
 
+![image](https://github.com/user-attachments/assets/9b68c92a-eb3a-4086-a5ba-a16437f72041)
+
+
+Only two files are changed, content.css and content.js
+As well as manifest.json
 
 
 
 
-
-
+-------
 Credit: Thank you James Anderson for creating Leechblock
 
 
