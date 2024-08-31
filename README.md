@@ -13,6 +13,6 @@ Only two files are changed, "content.css" and "content.js". As well as manifest.
 
 
 ----
-Credit: Thank you James Anderson for creating Leechblock
+Credit: Thank you James Anderson for creating Leechblock.
 
 
