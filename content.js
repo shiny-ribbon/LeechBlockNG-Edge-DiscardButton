@@ -82,9 +82,8 @@ function updateTimer(text, size, location) {
 			if (DiscardFontSize == 16){	DiscardFontSize = "12px"; DiscardHeight = "26px";}
 			if (DiscardFontSize == 24){	DiscardFontSize = "14px"; DiscardHeight = "34px";}
 			if (DiscardFontSize == 30){	DiscardFontSize = "16px"; DiscardHeight = "40px";}
-			DiscardFontSize = DiscardFontSize+ "px";
-			gDiscard.style.fontSize = DiscardFontSize;
-			gDiscard.style.fontSize = DiscardFontSize;
+
+
 		}
 
 		// Set location
