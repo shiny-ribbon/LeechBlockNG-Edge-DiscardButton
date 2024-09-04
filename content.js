@@ -7,8 +7,8 @@ const browser = chrome;
 const TIMER_SIZES = ["12px", "16px", "24px", "30px"];
 
 const TIMER_LOCATIONS = [
-	["0px", "auto", "auto", "0px"],
 	["0px", "auto", "0px", "auto"],
+	["0px", "auto", "auto", "0px"],
 	["auto", "0px", "auto", "0px"],
 	["auto", "0px", "0px", "auto"]
 ];
@@ -17,6 +17,12 @@ var gTimer;
 var gAlert;
 var gDiscard;
 let message;
+var pos;
+var posTop;
+var posLeft;
+var TimerPos;
+var DiscardFontSize;
+var DiscardHeight;
 
 // Notify background script that page has loaded
 //
@@ -41,14 +47,17 @@ function updateTimer(text, size, location) {
 	} else {
 		if (!gTimer) {
 			// Create timer
+
 			gTimer = document.createElement("div");
 			gTimer.setAttribute("class", "leechblock-timer");
+			gTimer.setAttribute("id", "leechblock-timer");
 			gTimer.addEventListener("dblclick", function (e) { this.style.display = "none"; });
 			
 			gDiscard = document.createElement("button");
 			gDiscard.setAttribute("class", "discard-button");
 			gDiscard.setAttribute("id", "discard-button");
 			gDiscard.addEventListener("click", discardTime);
+	gDiscard.hidden = false;
 
 		}
 
@@ -64,35 +73,56 @@ function updateTimer(text, size, location) {
 		// Set size
 		if (size >= 0 && size < TIMER_SIZES.length) {
 			gTimer.style.fontSize = TIMER_SIZES[size];
+
+
+			DiscardFontSize = TIMER_SIZES[size];
+			DiscardFontSize = parseInt(DiscardFontSize);
+
+			if (DiscardFontSize == 12){	DiscardFontSize = "10px"; DiscardHeight = "22px";}
+			if (DiscardFontSize == 16){	DiscardFontSize = "12px"; DiscardHeight = "26px";}
+			if (DiscardFontSize == 24){	DiscardFontSize = "14px"; DiscardHeight = "34px";}
+			if (DiscardFontSize == 30){	DiscardFontSize = "16px"; DiscardHeight = "40px";}
+			DiscardFontSize = DiscardFontSize+ "px";
+			gDiscard.style.fontSize = DiscardFontSize;
+			gDiscard.style.fontSize = DiscardFontSize;
 		}
 
 		// Set location
 		if (location >= 0 && location < TIMER_LOCATIONS.length) {
 			gTimer.style.top = TIMER_LOCATIONS[location][0];
 			gTimer.style.bottom = TIMER_LOCATIONS[location][1];
-			gTimer.style.left = "700px";
+			gTimer.style.left = TIMER_LOCATIONS[location][2];
 			gTimer.style.right = TIMER_LOCATIONS[location][3];
+
 		}
 
 		// Show timer
 		gTimer.hidden = false;
-
+		gDiscard.hidden = false;
 
 		//Now for gDiscard
 
 			gDiscard.innerText = "Discard Remaining Time";
-			gDiscard.style.fontSize = "16px";
 			gDiscard.style.position = 'fixed';
 			gDiscard.style.textAlign = 'center';
+			gDiscard.style.verticalAlign = 'middle';
+			gDiscard.style.width = 'auto';
 
-			gDiscard.style.top = "40px";
+
+			gDiscard.style.top = DiscardHeight;
 			gDiscard.style.bottom = TIMER_LOCATIONS[location][1];
-			gDiscard.style.left = "700px";
+			gDiscard.style.left = TIMER_LOCATIONS[location][2];
 			gDiscard.style.right = TIMER_LOCATIONS[location][3];
 
-			gDiscard.hidden = false;
 
 
+
+			/*
+			TimerPos = document.getElementById("leechblock-timer");
+			pos = TimerPos.innerText;
+			gDiscard.innerText = TimerPos.style.width;
+			*/
+	
 	}
 }
 
