@@ -7,6 +7,8 @@ Only two files are changed, "content.css" and "content.js". As well as manifest.
 
 
 ![image](https://github.com/user-attachments/assets/9b68c92a-eb3a-4086-a5ba-a16437f72041)
+![image](https://github.com/user-attachments/assets/d61957bb-70e3-457f-87a2-5706396951d3)
+
 
 
 
